@@ -1,7 +1,7 @@
 
-# _Xel: an orchestation model for reliable and generic services_
+# Jub AI (Big data): an orchestation model for reliable and generic services
 
-Xelhua (_Xel_) is a cloud-agnostic big data platform that faces the challenges of enabling end-users and organizations (at high-level and by using graphical design-driven schemes) to build high availability cloud agnostic analytics services without programming or configuring cloud computing and storage services. 
+Jub AI is a cloud-agnostic big data platform that faces the challenges of enabling end-users and organizations (at high-level and by using graphical design-driven schemes) to build high availability cloud agnostic analytics services without programming or configuring cloud computing and storage services. 
 
 - Create your own service repository.
 - Deploy your service repository in any kind of infrastructure, from local machines to cloud or multi-cloud.
@@ -17,7 +17,7 @@ Xelhua (_Xel_) is a cloud-agnostic big data platform that faces the challenges o
 
 # Muyal project
 
-Xelhua is part of Muyal, the pronaces project _"Plataforma tecnológica para la gestión, aseguramiento, intercambio y preservación de grandes volúmenes de datos en salud y construcción de un repositorio nacional de servicios de análisis de datos de salud"_ and fulfills with the following products:
+Jub AI is part of Muyal, the pronaces project _"Plataforma tecnológica para la gestión, aseguramiento, intercambio y preservación de grandes volúmenes de datos en salud y construcción de un repositorio nacional de servicios de análisis de datos de salud"_ and fulfills with the following products:
 
 + Modules to carry out basic statistical processes, statistical grouping, spatio-temporal queries with conditional operators and execution of evolutionary computation algorithms.
 
@@ -26,7 +26,7 @@ of crypto-applications
 
 # Tech
 
-The Xel platform uses a number of open source projects in currently implemented services, some of them are:
+The platform uses a number of open source projects in currently implemented services, some of them are:
 
 - [Tensorflow](https://www.tensorflow.org/)- open source library for numerical computation and large-scale machine learning.
 - [scikit-learn](https://scikit-learn.org/stable/) Machine Learning in Python.
@@ -37,14 +37,14 @@ The Xel platform uses a number of open source projects in currently implemented 
 
 # Installation
 
-Xel requires [Docker platform](https://www.docker.com/) and the [Docker-compose](https://docs.docker.com/compose/) to run.
+This requires [Docker platform](https://www.docker.com/) and the [Docker-compose](https://docs.docker.com/compose/) to run.
 
 The installation and deployment of this platform is done using virtual containers using the [Docker platform](https://www.docker.com/), and the [Docker-compose](https://docs.docker.com/compose/) tool for the deployment. If you want to deploy in a distributed environment, you need to configure a [Docker-swarm](https://docs.docker.com/engine/swarm/) cluster instead.
 
-_Note: To install xelhua on Windows, it is recommended to use docker in conjunction with [WSL2](https://www.ionos.mx/digitalguide/servidores/know-how/wsl2/) and install an operating system like Ubuntu or Centos._
+_Note: To install jub ai on Windows, it is recommended to use docker in conjunction with [WSL2](https://www.ionos.mx/digitalguide/servidores/know-how/wsl2/) and install an operating system like Ubuntu or Centos._
 
   ## 1.- Container images
-  The Xelhua modules can be generated in 2 ways: By using the source code to build the images from scratch, or by using the published images.
+  The Jub AI modules can be generated in 2 ways: By using the source code to build the images from scratch, or by using the published images.
 
   ### A) To build the images, use the following command:
   
@@ -58,27 +58,27 @@ _Note: To install xelhua on Windows, it is recommended to use docker in conjunct
   ```
   ## 2.- Configuration
 
-By default, you don't need to configure Xel to start using it, however, if you need to change any behavior of the platform, you need to review the documentation.
+By default, you don't need to configure Jub AI to start using it, however, if you need to change any behavior of the platform, you need to review the documentation.
 
   ## 3.- Deployment
 
   ```sh
-  docker-compose up -f Xel.yml -d
+  docker-compose up -f jubai.yml -d
   ```
   or to see the lofs...
   ```sh
-  docker-compose up -f Xel.yml
+  docker-compose up -f jubai.yml
   ```
 
-Xelhua can also be deployed in a distributed environment by using [Docker-swarm](https://docs.docker.com/engine/swarm/swarm-tutorial/), for this the following command is used.
+Jub AI can also be deployed in a distributed environment by using [Docker-swarm](https://docs.docker.com/engine/swarm/swarm-tutorial/), for this the following command is used.
 
 ```sh
- docker stack deploy -c Xel_remote.yml Xel
+ docker stack deploy -c jub_ai_remote.yml jub-ai
 ```
 
   ## Build and updates
 
-  The Xelhua's modules are self-contained in virtual containers. In case of updating the source code, it is necessary to build the images locally using the _build.sh_ script.
+  The Jub AI's modules are self-contained in virtual containers. In case of updating the source code, it is necessary to build the images locally using the _build.sh_ script.
 
 
 To rebuild the images in case of any change...
@@ -208,7 +208,7 @@ The solutions are designed based on instructions defined as a tree, following th
 
 - _data_map_ contains an object with the information of the dataset to process. Following this example, the dataset _pollutants_1986-2022.csv_ belongs to the user 300d03efcac4bab98d04af639dba337d5350ebd955fa39b4912376f7715a9fc6 in the Examples folder
 
-  The dataset must be previously uploaded to the platform. Below are the available ways up to this version of xel to provide a dataset
+  The dataset must be previously uploaded to the platform. Below are the available ways up to this version of jun ai to provide a dataset
 
   + **Upload it as a file**. Dataset can be send to the mesh as _multipart/form-data_ to the path /UploadDataset. In addition to the file, information must be provided for storage in the lake, such as the user identifier and the catalog (or workspace) where it will be stored, this is done as follows:
 
@@ -216,13 +216,13 @@ The solutions are designed based on instructions defined as a tree, following th
       {"workspace": "<catalog>", "user": "<token_user>"}
     ```
 
-    Once the file has been uploaded it needs to be specified in the json with the instructions. In this case, the dataset will be in the data lake of xel, and it is specified as follows:
+    Once the file has been uploaded it needs to be specified in the json with the instructions. In this case, the dataset will be in the data lake of jub ai, and it is specified as follows:
 
     ```json
       {"data_map":{"data":{"token_user":"<token_user>","catalog":"<catalog>","filename":"<name of the dataset>"},"type":"LAKE"}}
     ```
 
-  + Using the Acquisition _BB_ to access remote or local datasets (in localdata folder). In this case, since an acquisition BB will be used to obtain the data, xel is not required to provide input data. This is specified in the statement json as follows:
+  + Using the Acquisition _BB_ to access remote or local datasets (in localdata folder). In this case, since an acquisition BB will be used to obtain the data, jub ai is not required to provide input data. This is specified in the statement json as follows:
     ```json
       {"data_map":{"data":,"type":"DUMMY"}}
     ```
@@ -232,7 +232,7 @@ The solutions are designed based on instructions defined as a tree, following th
 - _alias_ is the name that will be assigned to the graph.
 - _token_solution_: is the unique identifier of the graph. If none is sent, one will be assigned automatically. If an ID that already exists is assigned, it will be overwritten, or the existing information will be used to compare the status of the services and the existing results.
 
-_Note: The use of xelhua endpoints requires, in addition to the parameters of the endpoint itself, an access token sent through the 'x-access-token' header_ 
+_Note: The use of jub ai endpoints requires, in addition to the parameters of the endpoint itself, an access token sent through the 'x-access-token' header_ 
 
 # Execution
 
